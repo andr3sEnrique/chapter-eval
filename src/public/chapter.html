@@ -9,29 +9,37 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Chapter Details</h2>
-        <form id="chapter-form">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" id="title" class="form-control" disabled>
+        
+            <div class="card">
+                <h2>Chapter Details</h2>
+                <form id="chapter-form">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" id="title" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numberoflessons" class="form-label">Number of Lessons</label>
+                        <input type="number" id="numberoflessons" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" id="author" class="form-control" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="isactive" class="form-label">Active</label>
+                        <input type="checkbox" id="isactive" disabled>
+                    </div>
+                </div>
+            </form>
+            
             </div>
-            <div class="mb-3">
-                <label for="numberoflessons" class="form-label">Number of Lessons</label>
-                <input type="number" id="numberoflessons" class="form-control" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="author" class="form-label">Author</label>
-                <input type="text" id="author" class="form-control" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="isactive" class="form-label">Active</label>
-                <input type="checkbox" id="isactive" disabled>
-            </div>
-        </form>
-        <button class="btn btn-primary" onclick="window.history.back();">Back</button>
+            <button class="btn btn-primary" onclick="window.history.back();">Back</button>
+        
     </div>
 
     <script>
+        const API_URL = 'http://localhost:3000/api/chapter/';
         const getChapterById = () => {
         const urlParams = new URLSearchParams(window.location.search);
             const chapterId = urlParams.get('id');
@@ -53,6 +61,7 @@
                     alert('Failed to load chapter details');
                 });
         }
+        getChapterById();
     </script>
 </body>
 </html>
