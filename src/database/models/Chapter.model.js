@@ -11,7 +11,6 @@ const ChapterSchema = new Schema({
         transform: function(doc, ret) {
             delete ret.createdAt;
             delete ret.updatedAt;
-            delete ret._id;
             delete ret.__v;
         }
     }

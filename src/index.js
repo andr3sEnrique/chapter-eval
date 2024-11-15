@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose');
 const { MONGO_URI } = require('./config/index');
 const app = express();
 const ChapterRoute = require('./routes');
+const cors = require('cors');
 const { jsonResponseMiddleware } = require('./middlewares/json-response.middleware');
 
 mongoose.connect(MONGO_URI).then(() => {
@@ -14,7 +15,7 @@ mongoose.connect(MONGO_URI).then(() => {
 app.use(express.json());
 app.use(jsonResponseMiddleware);
 app.use(express.urlencoded({extended: true}));
-
+app.use(cors());
 app.use('/api', ChapterRoute);
 
 app.listen(3000, () => {
