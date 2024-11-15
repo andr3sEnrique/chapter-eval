@@ -3,6 +3,20 @@ const errorsContainer = document.getElementById('errors');
 const successContainer = document.getElementById('success');
 const API_URL = 'http://localhost:3000/api/chapter/';
 const chaptersContainer = document.getElementById('chapters-container');
+const searchInput = document.getElementById('title-search');
+
+searchInput.addEventListener('input', async (e) => {
+    const searchTerm = e.target.value.trim();
+
+    if (searchTerm) {
+        const response = await fetch(`${API_URL}/search/${searchTerm}`);
+        const result = await response.json();
+
+        createChapters(result.data);
+    }else {
+        fetchChapters();
+    }
+})
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
